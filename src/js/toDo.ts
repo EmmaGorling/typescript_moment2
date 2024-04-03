@@ -19,23 +19,15 @@ export class TodoList implements Todo {
         this.priority = p;
     }
 
-    addTodo( task:string, priority: Priority ): boolean {
-        
-    };
+    getTask(): string {
+        return this.task;
+    }
 
-    markTodoCompleted( todoIndex:number ): void {
+    getCompleted(): boolean {
+        return this.completed;
+    }
 
-    };
-
-    getTodos(): Todo[] {
-
-    };
-
-    saveToLocalStorage(): void {
-
-    };
-
-    loadFromLocalStorage(): void {
-
-    };
+    getPriority(): Priority {
+        return this.priority;
+    }
 }
