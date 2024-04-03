@@ -1,19 +1,17 @@
-export type Priority = 1 | 2 | 3;
 
-interface Todo {
+interface TodoInterface {
     task: string;
     completed: boolean;
-    priority: Priority;
+    priority: number;
 }
 
-export class TodoList implements Todo {
+export class Todo implements TodoInterface {
 
     task: string;
     completed: boolean;
-    priority: Priority;
-    todos: Todo[];
+    priority: number;
 
-    constructor(t: string, c: boolean, p: Priority) {
+    constructor(t: string, c: boolean, p: number) {
         this.task = t;
         this.completed = c;
         this.priority = p;
@@ -27,7 +25,7 @@ export class TodoList implements Todo {
         return this.completed;
     }
 
-    getPriority(): Priority {
+    getPriority(): number {
         return this.priority;
     }
 }
