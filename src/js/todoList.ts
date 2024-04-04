@@ -9,7 +9,16 @@ export class TodoList {
     }
 
     addTodo(task: string, priority: number): boolean {
-
+        if(task && priority >= 1 && priority <= 3) {
+            
+            const todo: Todo = {task, priority, completed: false}
+            this.todos.push(todo);
+            this.saveToLocalStorage();
+            return true;
+            
+        } else {
+            return false;
+        }
     }
 
     markTodoCompleted(todoIndex: number): void {
@@ -21,7 +30,7 @@ export class TodoList {
     }
 
     saveToLocalStorage():void {
-        
+
     }
 
     loadFromLocalStorage(): void {
