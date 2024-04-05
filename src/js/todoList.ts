@@ -15,22 +15,24 @@ export class TodoList {
             this.todos.push(todo);
             this.saveToLocalStorage();
             return true;
-            
+
         } else {
             return false;
         }
     }
 
     markTodoCompleted(todoIndex: number): void {
-
+        if(this.todos[todoIndex].completed = false) {
+            this.todos[todoIndex].completed === true;
+        }
     }
 
     getTodos(): Todo[] {
-
+        return this.todos;
     }
 
     saveToLocalStorage():void {
-
+        localStorage.setItem('todos', JSON.stringify(this.todos));
     }
 
     loadFromLocalStorage(): void {
