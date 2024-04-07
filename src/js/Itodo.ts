@@ -1,6 +1,6 @@
 // Interface för todo-objekt
 
-export interface ITodo {
+export interface Todo {
     task: string;
     priority: number;
     completed: boolean;

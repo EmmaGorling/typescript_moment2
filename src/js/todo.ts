@@ -1,36 +1,42 @@
-import { ITodo } from "./Itodo";
+import { Todo } from "./Itodo";
 
-export class TodoList implements ITodo {
-    task: string;
-    priority: number;
-    completed: boolean;
+export class TodoList {
 
-    // Construcor för att sätta ihop todo-oject
-    constructor(task:string, priority: number, completed: boolean) {
-        this.task = task;
-        this.priority = priority;
-        this.completed = false;
+    private todos: Todo[] = []; // Array för att lagra todos
+
+    constructor () {
+        this.todos = [];
+        this.loadFromLocalStorage();
     }
-
-    todos: ITodo[] = []; // Array för att lagra todos
 
     // Metod för att lägga till todo
     addTodo(task:string, priority:number): boolean {
+        // Kolla input-värden
         if( task != '' && priority >= 1 && priority <= 3) {
-            return true;
+            // Skapa todo med värdena
+            const newTodo: Todo = {
+                task: task,
+                priority: priority,
+                completed: false
+            };
+
+            this.todos.push(newTodo);       // Lägg till i array
+            this.saveToLocalStorage();      // Spara till LS
+            return true;                    // Returnera true
         } else {
-            return false;
+            return false;                   // Om ej rätt, returnera false
         }
     }
 
     // Klarmarkera todo
     markTodoCompleted(todoIndex:number): void {
-        if(this.completed === false) {
-            this.completed = true
+        if(todoIndex >= 0 && todoIndex < this.todos.length) {
+            this.todos[todoIndex].completed = true;
+            this.saveToLocalStorage();
         }
     }
 
-    getTodos(): ITodo[] {
+    getTodos(): Todo[] {
         return this.todos;
     }
 
