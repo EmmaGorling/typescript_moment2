@@ -1,15 +1,10 @@
-import { Todo } from "./Itodo";
+import { Todo } from "./toDo";
 
 export class TodoList implements Todo {
 
-    task: string;
-    priority: number;
-    completed: boolean;
-    todos: Todo[]
+    private todos: Todo[] = [];
 
-    constructor(task:string, priority: number) {
-        task = this.task;
-        priority = this.priority;
+    constructor() {
         this.todos = [];
         this.loadFromLocalStorage();
     }
