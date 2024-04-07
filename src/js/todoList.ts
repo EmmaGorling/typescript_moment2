@@ -1,9 +1,15 @@
 import { Todo } from "./Itodo";
 
-export class TodoList {
+export class TodoList implements Todo {
+
+    task: string;
+    priority: number;
+    completed: boolean;
     todos: Todo[]
 
-    constructor() {
+    constructor(task:string, priority: number) {
+        task = this.task;
+        priority = this.priority;
         this.todos = [];
         this.loadFromLocalStorage();
     }
@@ -13,7 +19,6 @@ export class TodoList {
             
             const todo: Todo = {task, priority, completed: false}
             this.todos.push(todo);
-            this.saveToLocalStorage();
             return true;
 
         } else {
