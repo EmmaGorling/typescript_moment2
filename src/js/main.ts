@@ -8,7 +8,10 @@ document.addEventListener('DOMContentLoaded',  () => {
     form?.addEventListener('submit', (event) => {
         event.preventDefault(); // Hindrar att formuläret skickas traditionellt
         addNewTodo();
-    })
+    });
+
+    todoList.loadFromLocalStorage();
+    renderTodos();
 });
 
 function addNewTodo():void {
@@ -36,5 +39,10 @@ function renderTodos(): void {
         newLi.innerHTML = `
            <p>${todo.task}</p>`;
         todoUl.appendChild(newLi);
+        newLi.addEventListener('click', ()=> {
+            todoList.markTodoCompleted(index);
+            newLi.innerHTML += '<i class="fa-solid fa-check"></i>';
+        });
     });
 }
+console.log(localStorage.todo);
