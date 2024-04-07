@@ -49,7 +49,7 @@ export class TodoList {
     loadFromLocalStorage(): void {
         const todosStr = localStorage.getItem('todos');
         if (todosStr) {
-            return JSON.parse(todosStr)
+            this.todos = JSON.parse(todosStr)
         }
     }
 }
