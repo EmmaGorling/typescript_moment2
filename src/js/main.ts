@@ -34,7 +34,8 @@ function addNewTodo():void {
 function renderTodos(): void {
     const todoUl = document.getElementById('todoList') as HTMLUListElement;
     todoUl.innerHTML = '';
-    todoList.getTodos().forEach((todo, index) => {
+    const sortedTodos = todoList.getTodos().slice().sort((a, b) => (a.priority - b.priority));
+    sortedTodos.forEach((todo, index) => {
         const newLi = document.createElement('li');
         newLi.innerHTML = `
            <p>${todo.task}</p>`;
