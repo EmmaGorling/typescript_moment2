@@ -9,12 +9,20 @@ body {
 header {
     text-align: center;
     @include padding2;
+    background-color: $sage;
 }
 main {
     @include padding2;
     display: grid;
     grid-template-rows: auto auto;
     justify-content: center;
+    background-color: $off-white;
+    #container {
+        width: 90vw;
+        max-width: 500px;
+        @include padding2;
+        background-color: $mint;
+    }
     #form {
         text-align: center;
     }
@@ -25,4 +33,5 @@ main {
 footer {
     text-align: center;
     @include padding2;
+    background-color: $sage;
 }
