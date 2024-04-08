@@ -1,0 +1,12 @@
+// Färger
+$pink: #FA7070;
+$off-white: #FEFDED;
+$mint: #C6EBC5;
+$sage: #A1C398;
+
+$center: 0px auto;
+
+@mixin padding2 {
+    padding-top: 2em;
+    padding-bottom: 2em;
+}

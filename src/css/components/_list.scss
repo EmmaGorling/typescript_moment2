@@ -1,0 +1,18 @@
+@import '../utils/variables';
+
+ul {
+    list-style: none;
+    text-align: center;
+    li {
+        margin: 0.2em 2.3em 0.2em 0;
+    }
+    p {
+        display: inline-block;
+        padding: 0.5em;
+        border: 2px dotted $pink;
+    }
+    i {
+        display: inline-block;
+        margin-left: 1em;
+    }
+}

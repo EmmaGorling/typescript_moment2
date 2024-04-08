@@ -1,0 +1,28 @@
+@import '../utils/variables';
+
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+}
+
+header {
+    text-align: center;
+    @include padding2;
+}
+main {
+    @include padding2;
+    display: grid;
+    grid-template-rows: auto auto;
+    justify-content: center;
+    #form {
+        text-align: center;
+    }
+    h2 {
+        text-align: center;
+    }
+}
+footer {
+    text-align: center;
+    @include padding2;
+}

@@ -30,7 +30,7 @@ function addNewTodo():void {
         taskInput.value = '';
         priorityInput.value = '';
     } else {
-        alert('Please enter valid task & priority (1-3)');
+        alert('Var god ange vad som ska göras och med rätt prioritet (1-3).');
     }
 
 }
@@ -48,10 +48,15 @@ function renderTodos(): void {
         newLi.innerHTML = `
            <p>${todo.task}</p>`;
         todoUl.appendChild(newLi);
+
+        // Markera uppgift som klar
+        let checkIconAdd:boolean = false;
         newLi.addEventListener('click', ()=> {
             todoList.markTodoCompleted(index);
-            newLi.innerHTML += '<i class="fa-solid fa-check"></i>';
+            if (todoList.getTodos()[index].completed === true && !checkIconAdd) {
+                newLi.innerHTML += '<i class="fa-solid fa-check"></i>';
+                checkIconAdd = true;
+            }
         });
     });
-}
-console.log(localStorage.todo);
+};
