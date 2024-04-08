@@ -47,7 +47,7 @@ export class TodoList {
 
     // Hämta todos från local storage
     loadFromLocalStorage(): void {
-        const todosStr = localStorage.getItem('todos');
+        const todosStr = localStorage.getItem('todo');
         if (todosStr) {
             this.todos = JSON.parse(todosStr)
         }
