@@ -49,13 +49,20 @@ function renderTodos(): void {
            <p>${todo.task}</p>`;
         todoUl.appendChild(newLi);
 
-        // Markera uppgift som klar
-        let checkIconAdd:boolean = false;
+        // Kolla om todo är klarmarkerad & lägg till check-mark isåfall
+        if (todo.completed) {
+            const checkIcon = document.createElement('i');
+            checkIcon.classList.add('fa-solid', 'fa-check');
+            newLi.appendChild(checkIcon);
+        }
+
+        // Klicka på task för att klarmarkera
         newLi.addEventListener('click', ()=> {
             todoList.markTodoCompleted(index);
             if (todoList.getTodos()[index].completed === true && !checkIconAdd) {
-                newLi.innerHTML += '<i class="fa-solid fa-check"></i>';
-                checkIconAdd = true;
+                const checkIcon = document.createElement('i');
+                checkIcon.classList.add('fa-solid', 'fa-check');
+                newLi.appendChild(checkIcon);
             }
         });
     });
