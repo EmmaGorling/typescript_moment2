@@ -10,6 +10,11 @@ document.addEventListener('DOMContentLoaded',  () => {
         event.preventDefault(); // Hindrar att formuläret skickas traditionellt
         addNewTodo();
     });
+    // Rensa lista
+    const deleteBtn = document.getElementById('delete');
+    deleteBtn?.addEventListener('click', () => {
+        clearList();
+    })
 
     todoList.loadFromLocalStorage();
     renderTodos();
@@ -26,6 +31,9 @@ function addNewTodo():void {
 
     // Kollar inmatning
     if (todoList.addTodo(task, priority)) {
+        // Spara till local storage
+        todoList.saveToLocalStorage();
+        // Uppdatera lista och rensa inputs
         renderTodos();
         taskInput.value = '';
         priorityInput.value = '';
@@ -59,7 +67,8 @@ function renderTodos(): void {
         // Klicka på task för att klarmarkera
         newLi.addEventListener('click', ()=> {
             todoList.markTodoCompleted(index);
-            if (todoList.getTodos()[index].completed === true && !checkIconAdd) {
+            const ifChecked = newLi.querySelector('.fa-check');
+            if (todo.completed && !ifChecked) {
                 const checkIcon = document.createElement('i');
                 checkIcon.classList.add('fa-solid', 'fa-check');
                 newLi.appendChild(checkIcon);
@@ -67,3 +76,12 @@ function renderTodos(): void {
         });
     });
 };
+
+// Rensa lista och local storage
+function clearList():void {
+    // Hämta ul
+    const todoUl = document.getElementById('todoList') as HTMLUListElement;
+    todoUl.innerHTML = '';
+    // Rensa local storage
+    localStorage.removeItem('todo');
+}
