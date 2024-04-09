@@ -1,4 +1,4 @@
-import { TodoList } from "./toDo";
+import { TodoList } from "./todo";
 
 const todoList = new TodoList();       // Skapa instans av TodoList-klassen
 
